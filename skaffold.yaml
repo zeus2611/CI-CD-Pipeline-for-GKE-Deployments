@@ -1,0 +1,27 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: full-stack
+build:
+  artifacts:
+  - image: cicd-sample
+    context: ./
+deploy:
+  kustomize:
+    paths:
+    - k8s/dev/
+portForward:
+- resourceType: service
+  resourceName: cicd-sample
+  port: 8080
+profiles:
+- name: staging
+  deploy:
+    kustomize:
+      paths:
+      - k8s/staging/
+- name: prod
+  deploy:
+    kustomize:
+      paths:
+      - k8s/prod/

@@ -1,0 +1,7 @@
+resources:
+- ../base/deployments
+- ../base/services
+- ../base/rbac
+- redis.yaml
+patchesStrategicMerge:
+  - deployment.yaml

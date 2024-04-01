@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: cicd-sample
+spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      name: cicd-sample
+      labels:
+        env: dev
+    spec:
+      containers:
+      - name: cicd-sample
+        image: cicd-sample
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: VERSION
+          value: dev
