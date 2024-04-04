@@ -1,9 +1,0 @@
-apiVersion: deploy.cloud.google.com/v1
-kind: Target
-metadata:
-  name: staging
-  annotations: {}
-  labels: {}
-description: staging
-gke:
-  cluster: projects/project-id-placeholder/locations/us-central1/clusters/staging
